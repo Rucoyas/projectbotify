@@ -32,9 +32,26 @@
   </style>
 </head>
 <body>
+    <script>
+  onload = () => {
+    const webview = document.querySelector('webview')
+    const indicator = document.querySelector('.indicator')
+
+    const loadstart = () => {
+      indicator.innerText = 'loading...'
+    }
+
+    const loadstop = () => {
+      indicator.innerText = ''
+    }
+
+    webview.addEventListener('did-start-loading', loadstart)
+    webview.addEventListener('did-stop-loading', loadstop)
+  }
+</script>
   <div class="webview-container">
-    <iframe class="webview" src=
-    "http://94.130.129.40:8886/"></iframe>
+    <webview src=
+    "http://94.130.129.40:8886/"></webview>
   </div>
 </body>
 </html>
